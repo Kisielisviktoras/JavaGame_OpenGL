@@ -24,7 +24,7 @@ public class Main {
         Loader loader = new Loader();
         StaticShader shader = new StaticShader();
 
-        RawModel model = OBJLoader.loadObjModel("Kubas", loader);
+        RawModel model = OBJLoader.loadObjModel("bear", loader);
         ModelTexture texture = new ModelTexture(loader.loadTexture("mashup"));
         texture.setShineDamper(10);
         texture.setReflectivity(1);
@@ -36,6 +36,8 @@ public class Main {
 
         Terrain terrain = new Terrain(0,0, loader, new ModelTexture(loader.loadTexture("bush")));
         Terrain terrain2 = new Terrain(1,0, loader, new ModelTexture(loader.loadTexture("red")));
+        Terrain terrain3 = new Terrain(0,1, loader, new ModelTexture(loader.loadTexture("bush")));
+        Terrain terrain4 = new Terrain(1,1, loader, new ModelTexture(loader.loadTexture("red")));
 
         Camera camera = new Camera();
         List<Entity> allCubes = new ArrayList<>();
@@ -46,6 +48,8 @@ public class Main {
             camera.move();
             renderer.processTerrain(terrain);
             renderer.processTerrain(terrain2);
+            renderer.processTerrain(terrain3);
+            renderer.processTerrain(terrain4);
             renderer.processEntity(entity);
             renderer.render(light, camera);
             DisplayManager.updateDisplay();
